@@ -10,15 +10,6 @@ services:
       - 27010:27017
     volumes:
       - ./mongo_data:/data/db
-
-  nx-todolist-backend:
-    extends:
-      file: docker-compose.base.yml
-      service: nx-app-base
-    command: nx run nx-todolist-backend:dev:docker
-    ports:
-      - 4310:3333
-      - 4311:4311
       
 volumes:
   mono-node-modules: null
