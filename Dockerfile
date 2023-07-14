@@ -6,4 +6,4 @@ COPY . .
 
 RUN npm install
 
-CMD nx serve nx-todolist-backend
+CMD nx run nx-todolist-backend:serve:production
