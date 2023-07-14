@@ -14,7 +14,23 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@nx-todolist/auth": ["libs/auth/src/index.ts"],
+      "@nx-todolist/config": ["libs/shared/src/lib/config.ts"],
+      "@nx-todolist/mongo-id.pipe": ["libs/shared/src/lib/mongo-id.pipe.ts"],
+      "@nx-todolist/shared": ["libs/shared/src/index.ts"],
+      "@nx-todolist/tasks": ["libs/tasks/src/index.ts"],
+      "@nx-todolist/tasks/task.entity": ["libs/tasks/src/lib/task.entity.ts"],
+      "@nx-todolist/users/user.entity": ["libs/users/src/lib/users.entity.ts"],
+      "@nx-todolist/users": ["libs/users/src/index.ts"],
+      "@nx-todolist/auth/api-key.guard": ["libs/auth/src/lib/guards/api-key.guard.ts"],
+      "@nx-todolist/shared/jwt-auth.guard": ["libs/shared/src/lib/guards/jwt-auth.guard.ts"],
+      "@nx-todolist/shared/public.decorator": ["libs/shared/src/lib/decorators/public.decorator.ts"],
+      "@nx-todolist/shared/roles.decorator": ["libs/shared/src/lib/decorators/roles.decorator.ts"],
+      "@nx-todolist/shared/roles.model": ["libs/shared/src/lib/models/roles.model.ts"],
+      "@nx-todolist/shared/roles.guard": ["libs/shared/src/lib/guards/roles.guard.ts"],
+      "@nx-todolist/shared/token.interface": ["libs/shared/src/lib/models/token.interface.ts"],
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

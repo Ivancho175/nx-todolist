@@ -1,0 +1,1 @@
+web: nx run nx-todolist-backend:serve:production
