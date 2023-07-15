@@ -9,7 +9,6 @@ import { TasksModule } from '@nx-todolist/tasks';
 import { SharedModule } from '@nx-todolist/shared';
 import config from '@nx-todolist/config';
 import { AuthModule } from '@nx-todolist/auth';
-/* import { environments } from './environments'; */
 
 @Module({
   imports: [

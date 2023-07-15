@@ -42,11 +42,6 @@ export class UsersController {
     return this.usersService.getById(id);
   }
 
-  /* @Get(':id/tasks')
-  getTasks(@Param('id') id: number) {
-    return this.usersService.getTasks(id);
-  } */
-
   @Public()
   @Post()
   create(@Body() payload: CreateUser) {

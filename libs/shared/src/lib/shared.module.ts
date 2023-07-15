@@ -3,7 +3,6 @@ import { MongoClient } from 'mongodb';
 import config from './config';
 import { ConfigType } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
-/* import { RolesGuard } from './guards/roles.guard'; */
 
 const API_KEY = 'myKey';
 const API_KEY_PROD = 'myKeyProd';
@@ -11,11 +10,6 @@ const API_KEY_PROD = 'myKeyProd';
 @Global()
 @Module({
   imports: [
-    /* MongooseModule.forRoot('mongodb://localhost:27010', {
-      user: 'root',
-      pass: 'root',
-      dbName: 'nx-todolist',
-    }), */
     MongooseModule.forRootAsync({
       useFactory: (configService: ConfigType<typeof config>) => {
         const { connection, user, password, host, port, db_name } =
@@ -50,7 +44,6 @@ const API_KEY_PROD = 'myKeyProd';
       },
       inject: [config.KEY],
     },
-    /* { provide: 'APP_GUARD', useClass: RolesGuard }, */
   ],
   exports: ['API_KEY', 'MONGO', MongooseModule],
 })
