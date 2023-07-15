@@ -51,7 +51,7 @@
           "buildTarget": "nx-todolist-backend:build:development"
         },
         "production": {
-          "buildTarget": "nx-todolist-backend:build:production"
+          "buildTarget": "nx-todolist-backend:serve:production"
         }
       }
     },
