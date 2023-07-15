@@ -33,10 +33,10 @@
       },
       "configurations": {
         "development": {
-          "buildTarget": "nx-todolist-backend:build:development"
+          "outputPath": "dist/apps/nx-todolist-backend"
         },
         "production": {
-          "buildTarget": "nx-todolist-backend:build:production"
+          "outputPath": "dist/apps/nx-todolist-backend"
         }
       }
     },
@@ -51,7 +51,7 @@
           "buildTarget": "nx-todolist-backend:build:development"
         },
         "production": {
-          "buildTarget": "nx-todolist-backend:serve:production"
+          "buildTarget": "nx-todolist-backend:build:production"
         }
       }
     },
