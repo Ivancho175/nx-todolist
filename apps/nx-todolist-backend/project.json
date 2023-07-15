@@ -32,12 +32,8 @@
         "webpackConfig": "apps/nx-todolist-backend/webpack.config.js"
       },
       "configurations": {
-        "development": {
-          "outputPath": "dist/apps/nx-todolist-backend"
-        },
-        "production": {
-          "outputPath": "dist/apps/nx-todolist-backend"
-        }
+        "development": {},
+        "production": {}
       }
     },
     "serve": {
@@ -48,10 +44,10 @@
       },
       "configurations": {
         "development": {
-          "buildTarget": "nx-todolist-backend:serve:development"
+          "buildTarget": "nx-todolist-backend:build:development"
         },
         "production": {
-          "buildTarget": "nx-todolist-backend:serve:production"
+          "buildTarget": "nx-todolist-backend:build:production"
         }
       }
     },
