@@ -1,8 +1,9 @@
-version: '3.3'
+version: '3.9'
 
 services:
   mongo:
-    image: mongo:6.0.6
+    image: mongo:latest
+    restart: always
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: root
@@ -12,13 +13,17 @@ services:
       - ./mongo_data:/data/db
 
   nx-todolist-backend:
-    extends:
-      file: docker-compose.base.yml
-      service: nx-app-base
-    command: nx run nx-todolist-backend:serve:development:docker
+    build: .
     ports:
-      - 4310:3333
+      - 4000:3000
       - 4311:4311
+    environment:
+      DEV_PLATFORM: DOCKER
+      PORT: 3000
+      MONGODB_URI: mongo://mongo:27010
+      DB_NAME: nx-todolist
+    depends_on:
+      - mongo
       
 volumes:
-  mono-node-modules: null
+  mongo_data: {}

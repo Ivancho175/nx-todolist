@@ -2,9 +2,9 @@ FROM node:current-alpine3.17
 
 WORKDIR /nx-todolist
 
+COPY package*.json .
+RUN npm ci
 COPY . .
-
-RUN npm install
 
 RUN npx nx run nx-todolist-backend:build:production
 
