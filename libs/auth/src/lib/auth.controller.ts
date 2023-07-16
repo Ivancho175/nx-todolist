@@ -14,6 +14,7 @@ export class AuthController {
   @UseGuards(AuthGuard('local'))
   @Post('login')
   login(@Req() req: Request) {
+    // Agrego un comentario para hacer un push
     const user = req.user as User;
     return this.authService.generateToken(user);
   }
