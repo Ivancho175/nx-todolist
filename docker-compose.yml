@@ -20,7 +20,7 @@ services:
     environment:
       DEV_PLATFORM: DOCKER
       PORT: 3000
-      MONGODB_URI: mongo://mongo:27010
+      MONGODB_URI: mongodb://root:root@localhost:27010/?authMechanism=DEFAULT
       DB_NAME: nx-todolist
     depends_on:
       - mongo
