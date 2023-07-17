@@ -1,0 +1,33 @@
+{
+  "name": "nx-todolist-frontend-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/nx-todolist-frontend-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/nx-todolist-frontend-e2e/cypress.config.ts",
+        "devServerTarget": "nx-todolist-frontend:serve:development",
+        "testingType": "e2e"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "nx-todolist-frontend:serve:production"
+        },
+        "ci": {
+          "devServerTarget": "nx-todolist-frontend:serve-static"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/nx-todolist-frontend-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["nx-todolist-frontend"]
+}
