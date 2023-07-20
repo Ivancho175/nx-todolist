@@ -3,7 +3,6 @@ import {
   IsString,
   IsNotEmpty,
   IsOptional,
-  IsDateString,
   IsBoolean,
   IsNumber,
   IsPositive,
@@ -25,11 +24,11 @@ export class CreateTask {
   @IsNotEmpty()
   readonly completed!: boolean;
 
-  @IsDateString()
+  @IsDate()
   @IsNotEmpty()
   readonly created_at!: Date;
 
-  @IsDateString()
+  @IsDate()
   @IsOptional()
   readonly limit_date?: Date;
 }

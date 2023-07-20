@@ -1,0 +1,102 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  &_text {
+    display: flex;
+    flex-direction: column;
+    color: #6e6e6e;
+    text-align: center;
+    gap: 0.5rem;
+    &_description {
+      font-size: 14px;
+    }
+  }
+
+  &_slider {
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+    &_buttons {
+      width: 100%;
+      max-width: 25rem;
+      margin: 0 auto;
+      button {
+        width: 50%;
+        padding: 0.5rem;
+        color: #ffffff;
+        border-style: none;
+        background-color: #3f3f3f3d;
+        border: 1px solid #d1d1d13d;
+        font-family: 'Raleway', sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        &.home_slider_buttons_login {
+          border-radius: 0.5rem 0 0 0.5rem;
+        }
+        &.home_slider_buttons_register {
+          border-radius: 0 0.5rem 0.5rem 0;
+        }
+        &.active {
+          color: #3f3f3fbe;
+          background-color: #ffffff;
+          border: 1px solid #3f3f3f3d;
+        }
+      }
+    }
+
+    &_slider-container {
+      display: flex;
+      width: 200%;
+      transition: transform 250ms linear;
+      &_slide {
+        width: 50%;
+        padding: 1.5rem 0.5rem;
+        &_form {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 1.5rem;
+          &_input-container {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+            width: 100%;
+            label {
+              font-size: 14px;
+            }
+            input {
+              width: 100%;
+              padding: 0.5rem;
+              outline: none;
+              border: 1px solid #3f3f3f3d;
+              border-radius: 0.5rem;
+            }
+            input[placeholder] {
+              font-family: 'Raleway', sans-serif;
+              font-size: 14px;
+            }
+          }
+
+          .home_slider_slider-container_slide_form_submit-button {
+            width: 90%;
+            max-width: 21.875rem;
+            border-radius: 0.5rem;
+            padding: 0.5rem;
+            color: #ffffff;
+            border-style: none;
+            background-color: #3f3f3f3d;
+            border: 1px solid #d1d1d13d;
+            font-family: 'Raleway', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+          }
+        }
+      }
+      &.registering {
+        transform: translateX(-50%);
+      }
+    }
+  }
+}

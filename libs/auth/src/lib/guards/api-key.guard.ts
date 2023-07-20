@@ -21,7 +21,7 @@ export class ApiKeyGuard implements CanActivate {
     context: ExecutionContext
   ): boolean | Promise<boolean> | Observable<boolean> {
     const request = context.switchToHttp().getRequest<Request>();
-    const authHeader = request.header('auth');
+    const authHeader = request.header('Authorization');
     const isAuth = authHeader === this.configService.apiKey;
     if (!isAuth) {
       throw new UnauthorizedException(

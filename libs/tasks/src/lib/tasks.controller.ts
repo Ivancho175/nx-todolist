@@ -24,31 +24,30 @@ import { Role } from '@nx-todolist/shared/roles.model';
 export class TasksController {
   constructor(private tasksService: TasksService) {}
 
-  @Roles(Role.ADMIN)
   @Get()
   getAll(@Query() params?: FilterTasks) {
     return params ? this.tasksService.get(params) : this.tasksService.get();
   }
 
-  @Roles(Role.ADMIN)
+  @Roles([Role.ADMIN])
   @Get(':id')
   getById(@Param('id', MongoIdPipe) id: string) {
     return this.tasksService.getById(id);
   }
 
-  @Roles(Role.ADMIN || Role.USER)
+  @Roles([Role.USER, Role.ADMIN])
   @Post()
   create(@Body() payload: CreateTask) {
     return this.tasksService.create(payload);
   }
 
-  @Roles(Role.ADMIN || Role.USER)
+  @Roles([Role.USER, Role.ADMIN])
   @Put(':id')
   update(@Param('id', MongoIdPipe) id: string, @Body() payload: UpdateTask) {
     return this.tasksService.update(id, payload);
   }
 
-  @Roles(Role.ADMIN || Role.USER)
+  @Roles([Role.USER, Role.ADMIN])
   @Delete(':id')
   delete(@Param('id', MongoIdPipe) id: string) {
     return this.tasksService.delete(id);

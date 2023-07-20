@@ -1,0 +1,161 @@
+<section
+  class="dashboard"
+  [class.editing]="editing || creating || loading"
+  *ngIf="(profile | async) && !loading; else loadingBlock"
+>
+  <article class="dashboard_text">
+    <h4 class="dashboard_text_title">
+      Bienvenido(a){{ ' ' + (profile | async)?.data.name }}!
+    </h4>
+    <p class="dashboard_text_description">Esta es tu lista de deberes</p>
+  </article>
+
+  <article class="dashboard_subtitle">
+    <h3 class="dashboard_subtitle_text">Tareas:</h3>
+    <button
+      class="dashboard_subtitle_add-task"
+      type="button"
+      (click)="creating = true"
+    >
+      <span class="material-symbols-outlined"> add </span>
+      <p>Nueva tarea</p>
+    </button>
+  </article>
+
+  <div class="dashboard_tasks-container">
+    <ul class="dashboard_tasks-container_list">
+      <li
+        class="dashboard_tasks-container_list_item"
+        *ngFor="let task of (profile | async)?.data.tasks"
+      >
+        <details>
+          <summary>
+            <p>{{ task.name }}</p>
+            <div class="action-buttons">
+              <span
+                class="material-symbols-outlined edit"
+                (click)="editTask($event, task)"
+              >
+                edit_square
+              </span>
+
+              <span
+                class="material-symbols-outlined remove"
+                (click)="deleteTask($event, task._id)"
+              >
+                delete
+              </span>
+            </div>
+          </summary>
+          <article class="task-description">
+            <p class="task-description_text" *ngIf="task.description">
+              {{ task.description
+              }}<span
+                class="task-description_text_date"
+                *ngIf="task.limit_date"
+              >
+                -
+                {{ formatDate(task.limit_date) }}</span
+              >
+            </p>
+          </article>
+        </details>
+      </li>
+    </ul>
+  </div>
+
+  <dialog *ngIf="editing || creating">
+    <section class="task-card">
+      <div class="close-icon" (click)="closeTaskCard()">
+        <span class="material-symbols-outlined">close</span>
+      </div>
+      <form
+        *ngIf="creating"
+        [formGroup]="createForm"
+        #createFormRef="ngForm"
+        (ngSubmit)="sendCreateForm(createForm)"
+        class="task-card_edit-form"
+      >
+        <div class="task-card_edit-form_input-container">
+          <label for="create_task_name">Tarea</label>
+          <input
+            type="text"
+            id="create_task_name"
+            formControlName="create_task_name"
+            placeholder="Max. 20 caracteres"
+          />
+        </div>
+        <div class="task-card_edit-form_input-container">
+          <label for="create_task_description">Describe tu tarea</label>
+          <input
+            type="text"
+            id="create_task_description"
+            formControlName="create_task_description"
+          />
+        </div>
+        <div class="task-card_edit-form_input-container">
+          <label for="create_task_limit_date">Fecha límite</label>
+          <input
+            type="date"
+            id="create_task_limit_date"
+            formControlName="create_task_limit_date"
+          />
+        </div>
+        <button class="task-card_edit-form_submit-button" type="submit">
+          Agregar tarea
+        </button>
+      </form>
+
+      <form
+        *ngIf="editing"
+        [formGroup]="editForm"
+        #editFormRef="ngForm"
+        (ngSubmit)="sendEditForm(editForm)"
+        class="task-card_edit-form"
+      >
+        <div class="task-card_edit-form_input-container">
+          <label for="edit_task_name">Tarea</label>
+          <input
+            type="text"
+            id="edit_task_name"
+            formControlName="edit_task_name"
+            placeholder="Max. 20 caracteres"
+          />
+        </div>
+        <div class="task-card_edit-form_input-container">
+          <label for="edit_task_description">Describe tu tarea</label>
+          <input
+            type="text"
+            id="edit_task_description"
+            formControlName="edit_task_description"
+          />
+        </div>
+        <div class="task-card_edit-form_input-container">
+          <label for="edit_task_limit_date">Fecha límite</label>
+          <input
+            type="date"
+            id="edit_task_limit_date"
+            formControlName="edit_task_limit_date"
+          />
+        </div>
+        <button class="task-card_edit-form_submit-button" type="submit">
+          Editar tarea
+        </button>
+      </form>
+    </section>
+  </dialog>
+</section>
+
+<ng-template #loadingBlock>
+  <article
+    style="
+      width: 100%;
+      min-height: 20rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    "
+  >
+    <p>Cargando tus datos...</p>
+  </article>
+</ng-template>

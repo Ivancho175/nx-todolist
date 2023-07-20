@@ -30,13 +30,13 @@ import { Role } from '@nx-todolist/shared/roles.model';
 export class UsersController {
   constructor(private usersService: UsersService) {}
 
-  @Roles(Role.ADMIN)
+  @Roles([Role.ADMIN])
   @Get()
   getAll(@Query() params?: FilterUsers) {
     return params ? this.usersService.get(params) : this.usersService.get();
   }
 
-  @Roles(Role.ADMIN)
+  @Roles([Role.ADMIN])
   @Get(':id')
   getById(@Param('id') id: string) {
     return this.usersService.getById(id);
@@ -48,25 +48,25 @@ export class UsersController {
     return this.usersService.create(payload);
   }
 
-  @Roles(Role.ADMIN)
+  @Roles([Role.ADMIN])
   @Put(':id')
   update(@Param('id') id: string, @Body() payload: UpdateUser) {
     return this.usersService.update(id, payload);
   }
 
-  @Roles(Role.ADMIN)
+  @Roles([Role.ADMIN])
   @Delete(':id')
   delete(@Param('id') id: string) {
     return this.usersService.delete(id);
   }
 
-  @Roles(Role.ADMIN)
+  @Roles([Role.ADMIN])
   @Put(':id/tasks')
   addTasks(@Param('id') id: string, @Body() payload: AddTasksToUser) {
     return this.usersService.addTasks(id, payload.tasksIds);
   }
 
-  @Roles(Role.ADMIN)
+  @Roles([Role.ADMIN])
   @Delete(':id/tasks/:taskId')
   deleteTask(@Param('id') userId: string, @Param('taskId') taskId: string) {
     return this.usersService.deleteTask(userId, taskId);

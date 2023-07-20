@@ -20,6 +20,28 @@
         "libs/auth/src/lib/guards/api-key.guard.ts"
       ],
       "@nx-todolist/config": ["libs/shared/src/lib/config.ts"],
+      "@nx-todolist/frontend/auth.service": [
+        "libs/core/src/lib/services/auth.service.ts"
+      ],
+      "@nx-todolist/frontend/core": ["libs/core/src/index.ts"],
+      "@nx-todolist/frontend/auth.guard": ["libs/core/src/lib/guards/auth.guard.ts"],
+      "@nx-todolist/frontend/core.service": [
+        "libs/core/src/lib/services/core.service.ts"
+      ],
+      "@nx-todolist/frontend/dashboard": ["libs/dashboard/src/index.ts"],
+      "@nx-todolist/frontend/environment": [
+        "apps/nx-todolist-frontend/src/environments/environment.development.ts"
+      ],
+      "@nx-todolist/frontend/home": ["libs/home/src/index.ts"],
+      "@nx-todolist/frontend/time.interceptor": [
+        "libs/core/src/lib/interceptors/time.interceptor.ts"
+      ],
+      "@nx-todolist/frontend/token.interceptor": [
+        "libs/core/src/lib/interceptors/token.interceptor.ts"
+      ],
+      "@nx-todolist/frontend/token.service": [
+        "libs/core/src/lib/services/token.service.ts"
+      ],
       "@nx-todolist/mongo-id.pipe": ["libs/shared/src/lib/mongo-id.pipe.ts"],
       "@nx-todolist/shared": ["libs/shared/src/index.ts"],
       "@nx-todolist/shared/jwt-auth.guard": [
@@ -42,7 +64,9 @@
       ],
       "@nx-todolist/tasks": ["libs/tasks/src/index.ts"],
       "@nx-todolist/tasks/task.entity": ["libs/tasks/src/lib/task.entity.ts"],
+      "@nx-todolist/tasks/tasks.dto": ["libs/tasks/src/lib/tasks.dto.ts"],
       "@nx-todolist/users": ["libs/users/src/index.ts"],
+      "@nx-todolist/users/user.dto": ["libs/users/src/lib/users.dto.ts"],
       "@nx-todolist/users/user.entity": ["libs/users/src/lib/users.entity.ts"]
     }
   },

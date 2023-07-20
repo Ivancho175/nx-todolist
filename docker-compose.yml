@@ -12,20 +12,5 @@ services:
     volumes:
       - ./mongo_data:/data/db
 
-  nx-todolist-backend:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    ports:
-      - 4000:3000
-      - 4311:4311
-    environment:
-      DEV_PLATFORM: DOCKER
-      PORT: 3000
-      MONGODB_URI: mongodb+srv://ivancho175:ivancho175@nx-todolist-cluster.adwbvrw.mongodb.net/
-      DB_NAME: nx-todolist
-    depends_on:
-      - mongo
-      
 volumes:
   mongo_data: {}

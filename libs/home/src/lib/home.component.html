@@ -1,0 +1,115 @@
+<section class="home">
+  <article class="home_text">
+    <h4 class="home_text_title">Bienvenido a tu APP de tareas</h4>
+    <p class="home_text_description">
+      Registrate y apunta una nueva tarea o ingresa para mantenerte al dia con
+      tu lista de deberes
+    </p>
+  </article>
+
+  <div class="home_slider">
+    <div class="home_slider_buttons">
+      <button
+        class="home_slider_buttons_login"
+        [class.active]="loging"
+        type="button"
+        (click)="goToLogin()"
+      >
+        Ingresa
+      </button>
+      <button
+        class="home_slider_buttons_register"
+        type="button"
+        [class.active]="!loging"
+        (click)="goToRegister()"
+      >
+        Regístrate
+      </button>
+    </div>
+
+    <div class="home_slider_slider-container" [class.registering]="!loging">
+      <div class="home_slider_slider-container_slide">
+        <form
+          [formGroup]="loginForm"
+          #loginFormRef="ngForm"
+          (ngSubmit)="sendLoginForm(loginForm)"
+          class="home_slider_slider-container_slide_form"
+        >
+          <div class="home_slider_slider-container_slide_form_input-container">
+            <label for="login-email">Ingresa tu email</label>
+            <input
+              type="text"
+              id="login_email"
+              formControlName="login_email"
+              placeholder="@email"
+            />
+          </div>
+          <div class="home_slider_slider-container_slide_form_input-container">
+            <label for="login-password">Ingresa tu contraseña</label>
+            <input
+              type="password"
+              id="login_password"
+              formControlName="login_password"
+            />
+          </div>
+          <button
+            *ngIf="loginForm.valid"
+            class="home_slider_slider-container_slide_form_submit-button"
+            type="submit"
+          >
+            Ingresar
+          </button>
+        </form>
+      </div>
+      <div class="home_slider_slider-container_slide">
+        <form
+          #registerFormRef="ngForm"
+          [formGroup]="registerForm"
+          (ngSubmit)="sendRegisterForm(registerForm)"
+          class="home_slider_slider-container_slide_form"
+        >
+          <div class="home_slider_slider-container_slide_form_input-container">
+            <label for="register_name">Nombre</label>
+            <input
+              type="text"
+              id="register_name"
+              formControlName="register_name"
+            />
+          </div>
+          <div class="home_slider_slider-container_slide_form_input-container">
+            <label for="register_last_name">Apellidos</label>
+            <input
+              type="text"
+              id="register_last_name"
+              formControlName="register_last_name"
+            />
+          </div>
+          <div class="home_slider_slider-container_slide_form_input-container">
+            <label for="register_email">Correo electrónico</label>
+            <input
+              type="text"
+              id="register_email"
+              formControlName="register_email"
+              placeholder="@email"
+            />
+          </div>
+          <div class="home_slider_slider-container_slide_form_input-container">
+            <label for="register_password">Contraseña</label>
+            <input
+              type="password"
+              id="register_password"
+              formControlName="register_password"
+            />
+          </div>
+          <button
+            *ngIf="registerForm.valid"
+            class="home_slider_slider-container_slide_form_submit-button"
+            type="submit"
+          >
+            Registrarse
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

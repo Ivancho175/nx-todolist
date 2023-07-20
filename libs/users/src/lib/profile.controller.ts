@@ -24,35 +24,36 @@ import { AddTasksToUser, UpdateUser } from './users.dto';
 @Controller('profile')
 export class ProfileController {
   constructor(private usersService: UsersService) {}
-  @Roles(Role.ADMIN || Role.USER)
+
+  @Roles([Role.USER, Role.ADMIN])
   @Get()
   getProfile(@Req() req: Request) {
     const user = req.user as PayloadToken;
     return this.usersService.getById(user.sub);
   }
 
-  @Roles(Role.ADMIN || Role.USER)
+  @Roles([Role.USER, Role.ADMIN])
   @Put()
   updateProfile(@Req() req: Request, @Body() payload: UpdateUser) {
     const user = req.user as PayloadToken;
     return this.usersService.update(user.sub, payload);
   }
 
-  @Roles(Role.ADMIN || Role.USER)
+  @Roles([Role.USER, Role.ADMIN])
   @Delete()
   deleteProfile(@Req() req: Request) {
     const user = req.user as PayloadToken;
     return this.usersService.delete(user.sub);
   }
 
-  @Roles(Role.ADMIN || Role.USER)
+  @Roles([Role.USER, Role.ADMIN])
   @Put('tasks')
   addTasks(@Req() req: Request, @Body() payload: AddTasksToUser) {
     const user = req.user as PayloadToken;
     return this.usersService.addTasks(user.sub, payload.tasksIds);
   }
 
-  @Roles(Role.ADMIN || Role.USER)
+  @Roles([Role.USER, Role.ADMIN])
   @Delete('tasks/:taskId')
   deleteTask(@Req() req: Request, @Param('taskId') taskId: string) {
     const user = req.user as PayloadToken;

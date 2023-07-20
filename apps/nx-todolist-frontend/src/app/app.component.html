@@ -1,2 +1,30 @@
-<nx-todolist-nx-welcome></nx-todolist-nx-welcome>
-<router-outlet></router-outlet>
+<div class="base">
+  <div class="container">
+    <header>
+      <article class="logo">
+        <span class="material-symbols-outlined"> fact_check </span>
+        <h1>Nx TodoList</h1>
+      </article>
+      <section class="menu">
+        <figure class="menu_icon" (click)="toggleMenu()">
+          <span class="material-symbols-outlined"> menu </span>
+        </figure>
+
+        <div class="menu_card" *ngIf="displayMenu">
+          <ul class="menu_card_list">
+            <li class="menu_card_list_item">
+              <span class="material-symbols-outlined"> account_circle </span>
+              <p>Perfil</p>
+            </li>
+            <div class="separator"></div>
+            <li class="menu_card_list_item" (click)="logout()">
+              <span class="material-symbols-outlined"> logout </span>
+              <p>Salir</p>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </header>
+    <router-outlet></router-outlet>
+  </div>
+</div>
