@@ -19,6 +19,12 @@ export const appRoutes: Route[] = [
     canActivate: [authGuard],
   },
   {
+    path: 'profile',
+    loadChildren: () =>
+      import('@nx-todolist/frontend/profile').then((m) => m.ProfileModule),
+    canActivate: [authGuard],
+  },
+  {
     path: '**',
     redirectTo: 'home',
   },

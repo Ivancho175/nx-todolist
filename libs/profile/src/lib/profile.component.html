@@ -1,0 +1,83 @@
+<section
+  class="profile"
+  *ngIf="(profile | async) && !loading; else loadingBlock"
+>
+  <article class="profile_text">
+    <h4 class="dashboard_text_title">
+      Bienvenido(a){{ ' ' + (profile | async)?.data.name }}!
+    </h4>
+    <p class="dashboard_text_description">
+      Esta es la información de tu perfil
+    </p>
+  </article>
+
+  <form
+    #editUserFormRef="ngForm"
+    [formGroup]="editUserForm"
+    (ngSubmit)="sendEditUserForm(editUserForm)"
+    class="profile_form"
+  >
+    <div class="profile_form_input-container">
+      <label for="profile_name">Nombre</label>
+      <input
+        [placeholder]="(profile | async)?.data.name"
+        type="text"
+        id="profile_name"
+        formControlName="profile_name"
+      />
+    </div>
+    <div class="profile_form_input-container">
+      <label for="profile_last_name">Apellidos</label>
+      <input
+        [placeholder]="(profile | async)?.data.last_name"
+        type="text"
+        id="profile_last_name"
+        formControlName="profile_last_name"
+      />
+    </div>
+    <div class="profile_form_input-container">
+      <label for="profile_email">Correo electrónico</label>
+      <input
+        [placeholder]="(profile | async)?.data.email"
+        type="text"
+        id="profile_email"
+        formControlName="profile_email"
+        placeholder="@email"
+      />
+    </div>
+    <div class="profile_form_input-container">
+      <label for="profile_password">Contraseña</label>
+      <input
+        type="password"
+        id="profile_password"
+        formControlName="profile_password"
+      />
+    </div>
+    <button
+      *ngIf="
+        editUserForm.value.profile_name ||
+        editUserForm.value.profile_last_name ||
+        editUserForm.value.profile_email ||
+        editUserForm.value.profile_password
+      "
+      class="profile_form_submit-button"
+      type="submit"
+    >
+      Actualizar
+    </button>
+  </form>
+</section>
+
+<ng-template #loadingBlock>
+  <article
+    style="
+      width: 100%;
+      min-height: 20rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    "
+  >
+    <p>Cargando tus datos...</p>
+  </article>
+</ng-template>

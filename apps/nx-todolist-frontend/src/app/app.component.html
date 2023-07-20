@@ -12,12 +12,27 @@
 
         <div class="menu_card" *ngIf="displayMenu">
           <ul class="menu_card_list">
-            <li class="menu_card_list_item">
+            <li
+              class="menu_card_list_item"
+              routerLinkActive="active"
+              routerLink="dashboard"
+              (click)="displayMenu = false"
+            >
+              <span class="material-symbols-outlined"> fact_check </span>
+              <p>Tareas</p>
+            </li>
+            <!-- <div class="separator"></div> -->
+            <li
+              class="menu_card_list_item"
+              routerLinkActive="active"
+              routerLink="profile"
+              (click)="displayMenu = false"
+            >
               <span class="material-symbols-outlined"> account_circle </span>
               <p>Perfil</p>
             </li>
-            <div class="separator"></div>
-            <li class="menu_card_list_item" (click)="logout()">
+            <!-- <div class="separator"></div> -->
+            <li class="menu_card_list_item logout" (click)="logout()">
               <span class="material-symbols-outlined"> logout </span>
               <p>Salir</p>
             </li>

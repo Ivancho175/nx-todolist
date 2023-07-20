@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { lastValueFrom, switchMap } from 'rxjs';
 
-import { CreateUser } from '@nx-todolist/users/user.dto';
+import { CreateUser, UpdateUser } from '@nx-todolist/users/user.dto';
 import { Task } from '@nx-todolist/tasks/task.entity';
 import { CreateTask, UpdateTask } from '@nx-todolist/tasks/tasks.dto';
 
@@ -21,6 +21,11 @@ export class CoreService {
 
   public async postUser(payload: CreateUser) {
     const response = this.http.post(apiUrl + '/users', payload);
+    return lastValueFrom(response);
+  }
+
+  public async updateUser(payload: UpdateUser) {
+    const response = this.http.put(apiUrl + '/profile', payload);
     return lastValueFrom(response);
   }
 

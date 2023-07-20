@@ -20,11 +20,13 @@
         "libs/auth/src/lib/guards/api-key.guard.ts"
       ],
       "@nx-todolist/config": ["libs/shared/src/lib/config.ts"],
+      "@nx-todolist/frontend/auth.guard": [
+        "libs/core/src/lib/guards/auth.guard.ts"
+      ],
       "@nx-todolist/frontend/auth.service": [
         "libs/core/src/lib/services/auth.service.ts"
       ],
       "@nx-todolist/frontend/core": ["libs/core/src/index.ts"],
-      "@nx-todolist/frontend/auth.guard": ["libs/core/src/lib/guards/auth.guard.ts"],
       "@nx-todolist/frontend/core.service": [
         "libs/core/src/lib/services/core.service.ts"
       ],
@@ -33,9 +35,7 @@
         "apps/nx-todolist-frontend/src/environments/environment.development.ts"
       ],
       "@nx-todolist/frontend/home": ["libs/home/src/index.ts"],
-      "@nx-todolist/frontend/time.interceptor": [
-        "libs/core/src/lib/interceptors/time.interceptor.ts"
-      ],
+      "@nx-todolist/frontend/profile": ["libs/profile/src/index.ts"],
       "@nx-todolist/frontend/token.interceptor": [
         "libs/core/src/lib/interceptors/token.interceptor.ts"
       ],

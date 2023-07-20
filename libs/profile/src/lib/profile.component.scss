@@ -1,0 +1,56 @@
+.profile {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  &_text {
+    display: flex;
+    flex-direction: column;
+    color: #6e6e6e;
+    text-align: center;
+    gap: 0.5rem;
+  }
+
+  &_form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    &_input-container {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      width: 100%;
+      label {
+        font-size: 14px;
+      }
+      input {
+        width: 100%;
+        padding: 0.5rem;
+        outline: none;
+        border: 1px solid #3f3f3f3d;
+        border-radius: 0.5rem;
+        font-family: 'Raleway', sans-serif;
+        font-size: 14px;
+      }
+      input[placeholder] {
+        font-family: 'Raleway', sans-serif;
+        font-size: 14px;
+      }
+    }
+
+    .profile_form_submit-button {
+      width: 90%;
+      max-width: 21.875rem;
+      border-radius: 0.5rem;
+      padding: 0.5rem;
+      color: #ffffff;
+      border-style: none;
+      background-color: #3f3f3f3d;
+      border: 1px solid #d1d1d13d;
+      font-family: 'Raleway', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+    }
+  }
+}
