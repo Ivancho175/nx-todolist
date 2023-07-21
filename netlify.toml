@@ -1,0 +1,7 @@
+[build]
+publish = "dist/apps/nx-todolist-frontend"
+command = "npx nx build nx-todolist-frontend"
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200
