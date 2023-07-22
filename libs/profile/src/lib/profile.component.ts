@@ -67,6 +67,7 @@ export class ProfileComponent {
       this.editUserForm.reset();
       this.editUserFormRef.resetForm();
       this.getProfile();
+      this.ref.markForCheck();
     }
   }
 

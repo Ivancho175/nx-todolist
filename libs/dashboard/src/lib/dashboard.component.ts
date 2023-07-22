@@ -55,6 +55,7 @@ export class DashboardComponent {
       edit_task_description: new FormControl(''),
       edit_task_limit_date: new FormControl(''),
     });
+
     setTimeout(() => {
       this.profile = this.coreService.getProfile();
       this.loading = false;

@@ -1,5 +1,53 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700&display=swap');
+
+:root {
+  /* Global styles*/
+  --ff-primary: 'Raleway', sans-serif;
+
+  --fw-thin: 300;
+  --fw-regular: 400;
+  --fw-semi-bold: 600;
+  --fw-bold: bold;
+
+  --clr-black: #1a120a;
+  --clr-blackt: #1a120a9f;
+  --clr-black-light: #3f3f3f3d;
+  --clr-grey: #c2b8ae;
+  --clr-white: #e5dace;
+
+  --clr-primary-400: #c38b4e;
+  --clr-primary-400t: #c38b4e9f;
+  --clr-primary-600: #a87843;
+  --clr-primary-800: #8f6639;
+
+  --clr-accent-400: #4e86c3;
+  --clr-accent-600: #4374a8;
+  --clr-accent-800: #39638f;
+
+  --background: var(--clr-white);
+  --foreground: #6e6e6e;
+}
+
+.darkMode {
+  --background: var(--clr-black);
+  --foreground: var(--clr-white);
+
+  input {
+    background-color: transparent;
+    border: 1px solid var(--clr-white);
+    color: var(--clr-white);
+  }
+
+  input[type='date']::-webkit-calendar-picker-indicator {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 24 24"><path fill="%23bbbbbb" d="M20 3h-1V1h-2v2H7V1H5v2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 18H4V8h16v13z"/></svg>');
+  }
+
+  .menu_card {
+    box-shadow: none;
+  }
+}
+
 *,
 *::before,
 *::after {
@@ -13,5 +61,7 @@ html {
 }
 
 body {
-  font-family: 'Raleway', sans-serif;
+  font-family: var(--ff-primary);
+  background-color: var(--background);
+  color: var(--foreground);
 }

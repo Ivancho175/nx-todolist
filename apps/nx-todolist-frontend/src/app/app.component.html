@@ -1,42 +1,71 @@
 <div class="base">
   <div class="container">
     <header>
-      <article class="logo">
+      <article class="logo" routerLink="/dashboard">
         <span class="material-symbols-outlined"> fact_check </span>
         <h1>Nx TodoList</h1>
       </article>
+
       <section class="menu">
-        <figure class="menu_icon" (click)="toggleMenu()">
+        <figure class="menu_icon" (click)="toggleDarkMode()">
+          <span
+            class="material-symbols-outlined"
+            *ngIf="!darkMode; else lightBlock"
+          >
+            dark_mode
+          </span>
+          <ng-template #lightBlock>
+            <span class="material-symbols-outlined"> light_mode </span>
+          </ng-template>
+        </figure>
+
+        <figure
+          class="menu_icon .hamburguer"
+          (click)="toggleMenu()"
+          *ngIf="(hideHamburguer | async) === false"
+        >
           <span class="material-symbols-outlined"> menu </span>
         </figure>
 
-        <div class="menu_card" *ngIf="displayMenu">
-          <ul class="menu_card_list">
-            <li
-              class="menu_card_list_item"
-              routerLinkActive="active"
-              routerLink="dashboard"
-              (click)="displayMenu = false"
-            >
-              <span class="material-symbols-outlined"> fact_check </span>
-              <p>Tareas</p>
-            </li>
-            <!-- <div class="separator"></div> -->
-            <li
-              class="menu_card_list_item"
-              routerLinkActive="active"
-              routerLink="profile"
-              (click)="displayMenu = false"
-            >
-              <span class="material-symbols-outlined"> account_circle </span>
-              <p>Perfil</p>
-            </li>
-            <!-- <div class="separator"></div> -->
-            <li class="menu_card_list_item logout" (click)="logout()">
-              <span class="material-symbols-outlined"> logout </span>
-              <p>Salir</p>
-            </li>
-          </ul>
+        <div
+          class="menu_container"
+          (click)="displayMenu = false"
+          *ngIf="displayMenu"
+        >
+          <div class="menu_container_margins">
+            <div class="menu_container_margins_card">
+              <ul class="menu_container_margins_card_list">
+                <li
+                  class="menu_container_margins_card_list_item"
+                  routerLinkActive="active"
+                  routerLink="dashboard"
+                  (click)="displayMenu = false"
+                >
+                  <span class="material-symbols-outlined"> fact_check </span>
+                  <p>Tareas</p>
+                </li>
+                <li
+                  class="menu_container_margins_card_list_item"
+                  routerLinkActive="active"
+                  routerLink="profile"
+                  (click)="displayMenu = false"
+                >
+                  <span class="material-symbols-outlined">
+                    account_circle
+                  </span>
+                  <p>Perfil</p>
+                </li>
+                <div class="separator"></div>
+                <li
+                  class="menu_container_margins_card_list_item logout"
+                  (click)="logout()"
+                >
+                  <span class="material-symbols-outlined"> logout </span>
+                  <p>Salir</p>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </section>
     </header>

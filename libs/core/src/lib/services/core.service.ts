@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { lastValueFrom, switchMap } from 'rxjs';
+import { BehaviorSubject, lastValueFrom, shareReplay, switchMap } from 'rxjs';
 
 import { CreateUser, UpdateUser } from '@nx-todolist/users/user.dto';
 import { Task } from '@nx-todolist/tasks/task.entity';
@@ -12,6 +12,8 @@ const apiUrl = process.env['NX_API_URL'];
   providedIn: 'root',
 })
 export class CoreService {
+  public IsLandingPage = new BehaviorSubject<boolean>(false);
+
   constructor(private http: HttpClient) {}
 
   public async getUsers() {
@@ -60,6 +62,14 @@ export class CoreService {
 
   public getProfile() {
     const response = this.http.get(apiUrl + '/profile');
-    return response;
+    return response.pipe(shareReplay());
+  }
+
+  public getIslandingPageValue() {
+    return this.IsLandingPage.value;
+  }
+
+  public setIslandingPageValue(value: boolean) {
+    this.IsLandingPage.next(value);
   }
 }

@@ -10,7 +10,7 @@
   &_text {
     display: flex;
     flex-direction: column;
-    color: #6e6e6e;
+    color: var(--foreground);
     text-align: center;
     gap: 0.5rem;
   }
@@ -21,7 +21,7 @@
     justify-content: space-between;
     align-items: center;
     &_text {
-      color: #6e6e6e;
+      color: var(--foreground);
     }
 
     &_add-task {
@@ -32,8 +32,8 @@
       align-items: center;
       border: none;
       border-radius: 0.5rem;
-      color: #ffffff;
-      background-color: #3f3f3f3d;
+      color: var(--clr-white);
+      background-color: var(--clr-accent-400);
       span {
         font-size: 20px;
       }
@@ -51,8 +51,8 @@
       list-style: none;
       &_item {
         details {
-          color: #ffffff;
-          background-color: #3f3f3f3d;
+          color: var(--clr-white);
+          background-color: var(--clr-primary-400t);
           border-radius: 0.3rem;
           .task-description {
             padding: 0.5rem;
@@ -68,7 +68,7 @@
           justify-content: space-between;
           align-items: center;
           list-style: none;
-          background-color: #3f3f3f15;
+          background-color: var(--clr-primary-400t);
           padding: 0.5rem;
           p,
           .material-symbols-outlined {
@@ -96,7 +96,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #000000b9;
+    background-color: var(--clr-blackt);
+    backdrop-filter: blur(3px);
     width: 100%;
     height: 100%;
     border: none;
@@ -108,13 +109,15 @@
       max-width: 25rem;
       height: auto;
       padding: 1rem 0.5rem;
-      background-color: #ffffff;
+      background-color: var(--background);
+      color: var(--foreground);
+      border: 1px solid var(--clr-white);
       border-radius: 0.5rem;
       .close-icon {
         position: absolute;
         top: -1.5rem;
         right: 0;
-        color: #ffffff;
+        color: var(--clr-white);
         font-size: 1rem;
         cursor: default;
         user-select: none;
@@ -132,16 +135,16 @@
           label {
             font-size: 14px;
           }
-          input {
+          input,
+          input[type='date'],
+          input[placeholder] {
             width: 100%;
             padding: 0.5rem;
             outline: none;
-            border: 1px solid #3f3f3f3d;
-            border-radius: 0.5rem;
-          }
-          input[placeholder] {
-            font-family: 'Raleway', sans-serif;
+            border: 1px solid var(--clr-black-light);
+            font-family: var(--ff-primary);
             font-size: 14px;
+            border-radius: 0.5rem;
           }
         }
 
@@ -150,10 +153,9 @@
           max-width: 21.875rem;
           border-radius: 0.5rem;
           padding: 0.5rem;
-          color: #ffffff;
+          color: var(--clr-white);
           border-style: none;
-          background-color: #3f3f3f3d;
-          border: 1px solid #d1d1d13d;
+          background-color: var(--clr-accent-400);
           font-family: 'Raleway', sans-serif;
           font-size: 14px;
           font-weight: 600;

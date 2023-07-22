@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnDestroy,
+  ViewChild,
+} from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -19,7 +24,7 @@ import { CreateUser } from '@nx-todolist/users/user.dto';
   styleUrls: ['./home.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HomeComponent {
+export class HomeComponent implements OnDestroy {
   public loging = true;
 
   loginForm: FormGroup;
@@ -59,6 +64,12 @@ export class HomeComponent {
       ]),
       register_password: new FormControl('', [Validators.required]),
     });
+
+    this.coreService.setIslandingPageValue(true);
+  }
+
+  ngOnDestroy(): void {
+    this.coreService.setIslandingPageValue(false);
   }
 
   public sendLoginForm(form: FormGroup) {
