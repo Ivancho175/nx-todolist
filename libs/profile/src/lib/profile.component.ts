@@ -6,7 +6,9 @@ import {
   FormGroupDirective,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CoreService } from '@nx-todolist/frontend/core.service';
+import { TokenService } from '@nx-todolist/frontend/token.service';
 import { UpdateUser } from '@nx-todolist/users/user.dto';
 import { User } from '@nx-todolist/users/user.entity';
 import { Observable } from 'rxjs';
@@ -18,6 +20,7 @@ import { Observable } from 'rxjs';
 })
 export class ProfileComponent {
   public loading = true;
+  public removeProfileConfirmation = false;
   public editUserForm: FormGroup;
   public profile!:
     | Observable<any | { message: string; data: User }>
@@ -28,7 +31,9 @@ export class ProfileComponent {
   constructor(
     private formBuilder: FormBuilder,
     private coreService: CoreService,
-    private ref: ChangeDetectorRef
+    private tokenService: TokenService,
+    private ref: ChangeDetectorRef,
+    private router: Router
   ) {
     this.editUserForm = this.formBuilder.group({
       profile_name: new FormControl(''),
@@ -73,5 +78,25 @@ export class ProfileComponent {
 
   private getProfile() {
     this.profile = this.coreService.getProfile();
+  }
+
+  public async removeAccount() {
+    await this.coreService.deleteProfile().then((res) => {
+      try {
+        console.log(res);
+        this.router.navigate(['home']).then(() => {
+          /* this.tokenService.setAccessToken(''); */
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    });
+  }
+
+  public removeProfileConfirmationDialog(event: Event) {
+    const element = event.target as HTMLElement;
+    if (element.tagName === 'DIALOG') {
+      this.removeProfileConfirmation = false;
+    }
   }
 }

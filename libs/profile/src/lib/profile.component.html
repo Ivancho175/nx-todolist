@@ -68,6 +68,51 @@
       Actualizar
     </button>
   </form>
+  <div class="profile_remove-account-link">
+    <a
+      (click)="removeProfileConfirmation = true"
+      class="profile_remove-account_link"
+    >
+      Eliminar perfil
+    </a>
+  </div>
+
+  <dialog
+    *ngIf="removeProfileConfirmation"
+    (click)="removeProfileConfirmationDialog($event)"
+  >
+    <section class="remove-profile-card">
+      <figure class="remove-profile-card_warning-icon">
+        <div class="remove-profile-card_warning-icon_circle">
+          <span class="material-symbols-outlined">warning</span>
+        </div>
+      </figure>
+
+      <article class="remove-profile-card_text">
+        <h2 class="remove-profile-card_text_title">Atención!</h2>
+        <p class="remove-profile-card_text_paragraph">
+          Asegúrate de querer eliminar tu perfil y las tareas asociadas a él.
+        </p>
+      </article>
+
+      <div class="remove-profile-card_action-buttons">
+        <button
+          type="button"
+          class="remove-profile-card_action-buttons_cancel"
+          (click)="removeProfileConfirmation = false"
+        >
+          Cancelar
+        </button>
+        <button
+          type="button"
+          class="remove-profile-card_action-buttons_confirm"
+          (click)="removeAccount()"
+        >
+          Confirmar
+        </button>
+      </div>
+    </section>
+  </dialog>
 </section>
 
 <ng-template #loadingBlock>

@@ -120,6 +120,13 @@ export class DashboardComponent {
     this.editing = true;
   }
 
+  public checkIfDialog(event: Event) {
+    const element = event.target as HTMLElement;
+    if (element.tagName === 'DIALOG') {
+      this.closeTaskCard();
+    }
+  }
+
   public closeTaskCard() {
     this.editForm.reset();
     this.editFormRef ? this.editFormRef.resetForm() : null;

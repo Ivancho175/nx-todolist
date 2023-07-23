@@ -1,7 +1,8 @@
-import { ChangeDetectionStrategy, Component, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CoreService } from '@nx-todolist/frontend/core.service';
 import { Observable } from 'rxjs';
+let darkMode = localStorage.getItem('darkMode');
 
 @Component({
   selector: 'nx-todolist-root',
@@ -17,6 +18,9 @@ export class AppComponent {
 
   constructor(private router: Router, private coreService: CoreService) {
     this.hideHamburguer = this.coreService.IsLandingPage;
+    if (darkMode === 'enabled') {
+      this.enableDarkMode();
+    }
   }
 
   public logout() {
@@ -31,7 +35,21 @@ export class AppComponent {
 
   public toggleDarkMode() {
     this.darkMode = !this.darkMode;
-    const body = document.querySelector('body');
-    body?.classList.toggle('darkMode');
+    darkMode = localStorage.getItem('darkMode');
+    if (darkMode !== 'enabled') {
+      this.enableDarkMode();
+    } else {
+      this.disableDarkMode();
+    }
+  }
+
+  private enableDarkMode() {
+    localStorage.setItem('darkMode', 'enabled');
+    document.body.classList.add('darkMode');
+  }
+
+  private disableDarkMode() {
+    localStorage.setItem('darkMode', 'disabled');
+    document.body.classList.remove('darkMode');
   }
 }

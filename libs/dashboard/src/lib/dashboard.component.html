@@ -64,7 +64,7 @@
     </ul>
   </div>
 
-  <dialog *ngIf="editing || creating">
+  <dialog *ngIf="editing || creating" (click)="checkIfDialog($event)">
     <section class="task-card">
       <div class="close-icon" (click)="closeTaskCard()">
         <span class="material-symbols-outlined">close</span>
